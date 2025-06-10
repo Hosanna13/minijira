@@ -1,0 +1,23 @@
+package com.example.minijira.model;
+
+import jakarta.persistence.*;
+
+@Entity
+public class Task {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+    private String description;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
+
+    // Getters and Setters
+}
